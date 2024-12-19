@@ -1,5 +1,5 @@
 import streamlit as st
-#import plotly.express as px
+
 import pandas as pd
 import os
 import warnings
@@ -61,9 +61,11 @@ else:
     filtered_df = df3[df3["region"].isin(region) & df3["fruit type"].isin(fruit_type)]
 
 
+import plotly.express as px
+
 with col1:
     st.subheader("Relationship between real price and amount")
-    fig = st.express.scatter(filtered_df, y = "amount", x= "real price",trendline='ols',log_x=True,log_y=True)
+    fig = px.scatter(filtered_df, y = "amount", x= "real price",trendline='ols',log_x=True,log_y=True)
     
     st.plotly_chart(fig,use_container_width=True)
 
