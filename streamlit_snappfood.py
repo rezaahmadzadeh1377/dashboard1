@@ -18,7 +18,7 @@ if fl is not None:
     st.write(filename)
     df = pd.read_csv(filename, encoding = "ISO-8859-1")
 else:
-    os.chdir(r"C:\Users\win\Desktop")
+    #os.chdir(r"C:\Users\win\Desktop")
     df = pd.read_csv("file1.csv", encoding = "ISO-8859-1")
 
 # Getting the min and max date 
