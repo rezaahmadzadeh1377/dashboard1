@@ -63,7 +63,7 @@ else:
 
 with col1:
     st.subheader("Relationship between real price and amount")
-    fig = plotly.express.scatter(filtered_df, y = "amount", x= "real price",trendline='ols',log_x=True,log_y=True)
+    fig = st.express.scatter(filtered_df, y = "amount", x= "real price",trendline='ols',log_x=True,log_y=True)
     
     st.plotly_chart(fig,use_container_width=True)
 
