@@ -1,6 +1,6 @@
 
 import streamlit as st
-import seaborn as sns
+import plotly
 import pandas as pd
 import os
 import warnings
