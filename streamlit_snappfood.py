@@ -1,6 +1,6 @@
 
 import streamlit as st
-
+import matplotlib as plt
 import pandas as pd
 import os
 import warnings
@@ -62,7 +62,7 @@ else:
     filtered_df = df3[df3["region"].isin(region) & df3["fruit type"].isin(fruit_type)]
 
 
-import matplotlib.pyplot as plt
+
 
 with col1:
     st.subheader("Relationship between real price and amount")
