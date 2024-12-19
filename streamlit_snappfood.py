@@ -61,7 +61,7 @@ else:
     filtered_df = df3[df3["region"].isin(region) & df3["fruit type"].isin(fruit_type)]
 
 
-#import plotly.express as px
+import plotly
 
 with col1:
     st.subheader("Relationship between real price and amount")
