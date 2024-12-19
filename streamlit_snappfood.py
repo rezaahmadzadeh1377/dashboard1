@@ -68,7 +68,7 @@ with col1:
     st.subheader("Relationship between real price and amount")
     fig = st.scatter_chart(filtered_df, y = "amount", x= "real price")
     
-    st.plotly_chart(fig,use_container_width=True)
+    
 
 
 with col2:
@@ -76,7 +76,7 @@ with col2:
     fig = st.bar_chart(filtered_df, y= "amount", x = "dates")
     
     
-    st.plotly_chart(fig,use_container_width=True)
+    
 
 
 
