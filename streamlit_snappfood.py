@@ -1,6 +1,6 @@
-! pip install plotly
+
 import streamlit as st
-import plotly
+
 import pandas as pd
 import os
 import warnings
@@ -66,7 +66,7 @@ else:
 
 with col1:
     st.subheader("Relationship between real price and amount")
-    fig = plt.scatter(filtered_df, y = "amount", x= "real price",trendline='ols',log_x=True,log_y=True)
+    fig = st.scatter_chart(filtered_df, y = "amount", x= "real price",trendline='ols',log_x=True,log_y=True)
     
     st.plotly_chart(fig,use_container_width=True)
 
