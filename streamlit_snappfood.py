@@ -66,14 +66,14 @@ else:
 
 with col1:
     st.subheader("Relationship between real price and amount")
-    fig = st.scatter_chart(filtered_df, y = "amount", x= "real price",trendline='ols',log_x=True,log_y=True)
+    fig = st.scatter_chart(filtered_df, y = "amount", x= "real price")
     
     st.plotly_chart(fig,use_container_width=True)
 
 
 with col2:
     st.subheader("Region wise Sales")
-    fig = px.bar(filtered_df, y= "amount", x = "dates")
+    fig = st.bar_chart(filtered_df, y= "amount", x = "dates")
     
     
     st.plotly_chart(fig,use_container_width=True)
