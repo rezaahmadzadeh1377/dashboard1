@@ -1,6 +1,6 @@
 
 import streamlit as st
-import matplotlib as plt
+import seaborn as sns
 import pandas as pd
 import os
 import warnings
