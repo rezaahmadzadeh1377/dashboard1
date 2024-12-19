@@ -1,4 +1,3 @@
-pip install plotly cufflinks char_studio
 
 
 import cufflinks as cf
