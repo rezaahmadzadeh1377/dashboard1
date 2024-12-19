@@ -1,3 +1,5 @@
+pip install plotly
+
 import streamlit as st
 
 import pandas as pd
@@ -60,7 +62,7 @@ elif not region:
 else:
     filtered_df = df3[df3["region"].isin(region) & df3["fruit type"].isin(fruit_type)]
 
-pip install plotly
+
 import plotly
 
 with col1:
