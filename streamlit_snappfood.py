@@ -102,9 +102,11 @@ y =  np.log(filtered_df["amount"])
 X = sm.add_constant(X) 
 est = sm.OLS(y, X).fit() 
 if est.pvalues["real price"] <= 0.05:
-    st.write("")
+    s = f"<p style='font-size:20px;'>{est.params["real price"]}</p>"
+    st.markdown(s, unsafe_allow_html=True)  
+    
 
-    st.subheader(f" {pvalues["real price"]} dddkddjkskldskljslkwsdlwkqw"  )
+    #st.subheader(f" {pvalues["real price"]} dddkddjkskldskljslkwsdlwkqw"  )
 
 st.write(est.summary())
 
