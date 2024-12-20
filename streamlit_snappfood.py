@@ -95,8 +95,8 @@ est = sm.OLS(y, X).fit()
 st.write(est.summary())
 
 
-coloumn1 = st.columns((1))
-with coloumn1:
+column1,column2 = st.columns((2))
+with column1:
     st.subheader("two factor regression : q1 = p + q")
     X = filtered_df[["real price","total of fruits in one month","percentage of one fruit"]]
     y =  filtered_df["amount"]
