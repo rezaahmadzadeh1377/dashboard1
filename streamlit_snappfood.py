@@ -107,7 +107,9 @@ with column1:
     st.write(est.summary())
 with column2:
     if est.pvalues["real price"] <= 0.05:
-        st.markdown(est.params["real price"], unsafe_allow_html=True)
+        st.write(est.params["real price"])
+        st.markdown('<style>div.block-container{padding-top:1rem;}</style>',unsafe_allow_html=True)
+
         
     
     
