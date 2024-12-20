@@ -107,7 +107,8 @@ with column1:
     st.write(est.summary())
 with column2:
     if est.pvalues["real price"] <= 0.05:
-        st.write(est.params["real price"] + " is the sensitivity of price and is statistically large")
+        st.write(est.params["real price"] )
+        est.write(" is the sensitivity of price and is statistically large")
     
     
     
