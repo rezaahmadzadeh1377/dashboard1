@@ -101,7 +101,7 @@ st.subheader("two factor regression : q1 = p + qt + q' ")
 X = filtered_df[["real price","total of fruits in one month","percentage of one fruit"]]
 y =  filtered_df["amount"]
 X = sm.add_constant(X) 
-est = sm.logit(y, X).fit() 
+est = sm.Logit(y, X).fit() 
 st.write(est.summary())
     
     
