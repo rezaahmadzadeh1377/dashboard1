@@ -97,28 +97,18 @@ st.write(est.summary())
 
 
 column1,column2 = st.columns((2))
+X = np.log(filtered_df[["real price","percentage of one fruit"]])
+y =  np.log(filtered_df["amount"])
+X = sm.add_constant(X) 
+est = sm.OLS(y, X).fit() 
+if est.pvalues["real price"] <= 0.05:
 
-with column1: 
-    st.subheader("two factor regression : q1 = p + q' ")
-    X = np.log(filtered_df[["real price","percentage of one fruit"]])
-    y =  np.log(filtered_df["amount"])
-    X = sm.add_constant(X) 
-    est = sm.OLS(y, X).fit() 
-    st.write(est.summary())
-with column2:
-    if est.pvalues["real price"] <= 0.05:
-        st.write(est.params["real price"])
-        st.markdown("""
-<style>
-.big-font {
-    font-size:300px !important;
-}
-</style>
-""", unsafe_allow_html=True)
-        #st.markdown('<p class="big-font"{est.params["real price"];}</p>',unsafe_allow_html=True)
+st.subheader("two factor regression : q1 = p + q' ", est.params["real price"])
 
-        
+st.write(est.summary())
+
     
+        
     
     
 
