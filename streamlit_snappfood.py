@@ -66,9 +66,9 @@ else:
 
 with col1:
     st.subheader("Relationship between real price and amount")
-    fig = px.scatter(filtered_df, y = "amount", x= "real price",trendline='ols',log_x=True,log_y=True)
+    fig1 = px.scatter(filtered_df, y = "amount", x= "real price",trendline='ols',log_x=True,log_y=True)
     
-    st.plotly_chart(fig,use_container_width=True)
+    st.plotly_chart(fig1,use_container_width=True)
 
 
 with col2:
@@ -79,7 +79,7 @@ with col2:
     st.plotly_chart(fig,use_container_width=True)
 
     
-results = px.get_trendline_results(fig)
+results = px.get_trendline_results(fig1)
 st.write(results)
 
 
