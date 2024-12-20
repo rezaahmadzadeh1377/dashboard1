@@ -1,5 +1,5 @@
 import streamlit as st
-
+import statsmodels.api as sm
 import plotly.express as px
 import pandas as pd
 import os
@@ -84,7 +84,11 @@ results = px.get_trendline_results(fig1)
 
 st.write(results.px_fit_results.iloc[0].summary())
 
-
+X = filtered_df[["real price","total of fruits in one month"]]
+y =  filtered_df["amount"]
+X = sm.add_constant(X) 
+est = sm.OLS(y, X).fit() 
+st.write(est.summary())
 
 csv = df.to_csv(index = False).encode('utf-8')
 st.download_button('Download Data', data = csv, file_name = "Data.csv",mime = "text/csv")
