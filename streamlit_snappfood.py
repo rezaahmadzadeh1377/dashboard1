@@ -67,14 +67,16 @@ st.plotly_chart(fig,use_container_width=True)
 
 coll1, coll2 = st.columns((2))
 
-with coll1:
+with col11:
     st.subheader("Relationship between real price and amount")
     fig1 = px.scatter(filtered_df, y = "amount", x= "real price",trendline='ols',log_x=True,log_y=True)
     
     st.plotly_chart(fig1,use_container_width=True)
 
 
-#with coll2:
+with col12:
+    results = px.get_trendline_results(fig1)
+    st.write(results.px_fit_results.iloc[0].summary())
     
     
     
@@ -85,6 +87,7 @@ results = px.get_trendline_results(fig1)
 
 #st.write(results.px_fit_results.iloc[0].summary())
 
+st.subheader("two factor regression : q1 = p + q")
 X = filtered_df[["real price","total of fruits in one month"]]
 y =  filtered_df["amount"]
 X = sm.add_constant(X) 
