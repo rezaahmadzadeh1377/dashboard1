@@ -76,7 +76,7 @@ with coll1:
 
 with coll2:
     results = px.get_trendline_results(fig1)
-    st.write(results.px_fit_results.iloc[0].summary(),use_container_width=False)
+    st.write(results.px_fit_results.iloc[0].summary(),use_container_width=True)
     
     
     
