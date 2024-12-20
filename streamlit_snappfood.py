@@ -102,7 +102,7 @@ y =  np.log(filtered_df["amount"])
 X = sm.add_constant(X) 
 est = sm.OLS(y, X).fit() 
 if est.pvalues["real price"] <= 0.05:
-    s = f"<p style='font-size:20px;'>{est.params["real price"]}</p>"
+    s = f"<p style='font-size:20px;'>{est.params["real price"]} is the sensitibvity and it is large </p>"
     st.markdown(s, unsafe_allow_html=True)  
     
 
