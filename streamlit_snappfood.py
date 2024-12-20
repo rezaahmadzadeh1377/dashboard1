@@ -93,14 +93,14 @@ X = np.log(filtered_df[["real price","total of fruits in one month"]])
 y =  np.log(filtered_df["amount"])
 X = sm.add_constant(X) 
 est = sm.OLS(y, X).fit() 
-st.write(est.summary())
+
 if est.pvalues["real price"] <= 0.05:
     s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is statistically large </p>"
     st.markdown(s, unsafe_allow_html=True)  
 else:
     s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is not statistically large </p>"
     st.markdown(s, unsafe_allow_html=True)  
-
+st.write(est.summary())
 
 column1,column2 = st.columns((2))
 st.subheader("two factor regression : q1 = p + q' ")
