@@ -105,7 +105,7 @@ est = sm.OLS(y, X).fit()
 
 
 if est.pvalues["real price"] <= 0.05:
-    s = f"<p style='font-size:25px;'> {est.params["real price"]} is the sensitivity and it is statistically large </p>"
+    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity and it is statistically large </p>"
     st.markdown(s, unsafe_allow_html=True)  
     
 
