@@ -103,7 +103,7 @@ X = sm.add_constant(X)
 est = sm.OLS(y, X).fit() 
 if est.pvalues["real price"] <= 0.05:
 
-    st.subheader( [est.params["real price"]]  )
+    st.subheader( [est.params["real price"]] , "ddd"  )
 
 st.write(est.summary())
 
