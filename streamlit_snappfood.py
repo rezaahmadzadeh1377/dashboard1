@@ -62,7 +62,7 @@ else:
     filtered_df = df3[df3["region"].isin(region) & df3["fruit type"].isin(fruit_type)]
 
 st.subheader("Region wise Sales")
-fig = px.ine(filtered_df, y= "amount", x = "dates")
+fig = px.line(filtered_df, y= "amount", x = "dates")
 st.plotly_chart(fig,use_container_width=True)  
 
 
