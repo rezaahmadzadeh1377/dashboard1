@@ -103,7 +103,7 @@ X = sm.add_constant(X)
 est = sm.OLS(y, X).fit() 
 if est.pvalues["real price"] <= 0.05:
 
-st.subheader("two factor regression : q1 = p + q' ", est.params["real price"])
+    st.subheader("two factor regression : q1 = p + q' ", est.params["real price"])
 
 st.write(est.summary())
 
