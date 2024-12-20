@@ -107,7 +107,7 @@ with column1:
     st.write(est.summary())
 with column2:
     if est.pvalues["real price"] <= 0.05:
-        st.markdown(est.params["real price"] "is the sensitivity to price it is statistically significant" , unsafe_allow_html=True)
+        st.markdown(est.params["real price"], unsafe_allow_html=True)
         
     
     
