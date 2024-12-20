@@ -1,6 +1,6 @@
 
 import streamlit as st
-import plotly
+import sklearn
 import pandas as pd
 import os
 import warnings
