@@ -1,7 +1,8 @@
 from sklearn.datasets import load_iris
 from sklearn.preprocessing import StandardScaler, KBinsDiscretizer
 from sklearn.compose import ColumnTransformer
-import streamlit as st
+#import streamlit as st
+import plotly
 import sklearn
 import pandas as pd
 import os
