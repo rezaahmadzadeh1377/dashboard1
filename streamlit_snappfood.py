@@ -62,18 +62,19 @@ else:
     filtered_df = df3[df3["region"].isin(region) & df3["fruit type"].isin(fruit_type)]
 
 st.subheader("Region wise Sales")
-fig = px.line(filtered_df, y= "amount", x = "dates")
+fig = px.bar(filtered_df, y= "amount", x = "dates")
 st.plotly_chart(fig,use_container_width=True)  
 
+coll1, coll2 = st.columns((2))
 
-with col1:
+with coll1:
     st.subheader("Relationship between real price and amount")
     fig1 = px.scatter(filtered_df, y = "amount", x= "real price",trendline='ols',log_x=True,log_y=True)
     
     st.plotly_chart(fig1,use_container_width=True)
 
 
-#with col2:
+#with coll2:
     
     
     
