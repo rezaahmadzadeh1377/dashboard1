@@ -98,8 +98,8 @@ st.write(est.summary())
 
 column1,column2 = st.columns((2))
 
-st.subheader("two factor regression : q1 = p + qt + q' ")
-X = np.log(filtered_df[["real price","total of fruits in one month","percentage of one fruit"]])
+st.subheader("two factor regression : q1 = p + q' ")
+X = np.log(filtered_df[["real price","percentage of one fruit"]])
 y =  np.log(filtered_df["amount"])
 X = sm.add_constant(X) 
 est = sm.OLS(y, X).fit() 
