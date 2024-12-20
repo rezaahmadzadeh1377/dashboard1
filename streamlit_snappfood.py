@@ -98,12 +98,17 @@ st.write(est.summary())
 
 column1,column2 = st.columns((2))
 
-st.subheader("two factor regression : q1 = p + q' ")
-X = np.log(filtered_df[["real price","percentage of one fruit"]])
-y =  np.log(filtered_df["amount"])
-X = sm.add_constant(X) 
-est = sm.OLS(y, X).fit() 
-st.write(est.summary())
+with column1: 
+    st.subheader("two factor regression : q1 = p + q' ")
+    X = np.log(filtered_df[["real price","percentage of one fruit"]])
+    y =  np.log(filtered_df["amount"])
+    X = sm.add_constant(X) 
+    est = sm.OLS(y, X).fit() 
+    st.write(est.summary())
+with column2:
+    if est.pvalue["real price"] <= 0.05:
+        st.write(est.params["real price"] + " is the sensitivity of price and is statistically large")
+    
     
     
 
