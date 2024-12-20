@@ -80,9 +80,9 @@ with col2:
 
     
 results = px.get_trendline_results(fig1)
-results.px_fit_results.iloc[0].summary()
 
-st.write(results)
+
+st.write(results.px_fit_results.iloc[0].summary()s)
 
 
 
