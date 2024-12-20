@@ -79,7 +79,8 @@ with col2:
     st.plotly_chart(fig,use_container_width=True)
 
     
-
+results = px.get_trendline_results(fig)
+st.write(results)
 
 
 csv = df.to_csv(index = False).encode('utf-8')
