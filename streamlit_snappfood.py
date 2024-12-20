@@ -61,7 +61,9 @@ elif not region:
 else:
     filtered_df = df3[df3["region"].isin(region) & df3["fruit type"].isin(fruit_type)]
 
-
+st.subheader("Region wise Sales")
+fig = px.ine(filtered_df, y= "amount", x = "dates")
+st.plotly_chart(fig,use_container_width=True)  
 
 
 with col1:
@@ -71,12 +73,10 @@ with col1:
     st.plotly_chart(fig1,use_container_width=True)
 
 
-with col2:
-    st.subheader("Region wise Sales")
-    fig = px.bar(filtered_df, y= "amount", x = "dates")
+#with col2:
     
     
-    st.plotly_chart(fig,use_container_width=True)
+    
 
     
 results = px.get_trendline_results(fig1)
@@ -88,7 +88,7 @@ X = filtered_df[["real price","total of fruits in one month"]]
 y =  filtered_df["amount"]
 X = sm.add_constant(X) 
 est = sm.OLS(y, X).fit() 
-st.write(est)
+st.write(est.summary()
 
 csv = df.to_csv(index = False).encode('utf-8')
 st.download_button('Download Data', data = csv, file_name = "Data.csv",mime = "text/csv")
