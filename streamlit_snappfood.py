@@ -106,7 +106,7 @@ with column1:
     est = sm.OLS(y, X).fit() 
     st.write(est.summary())
 with column2:
-    if est.pvalue["real price"] <= 0.05:
+    if est.pvalues["real price"] <= 0.05:
         st.write(est.params["real price"] + " is the sensitivity of price and is statistically large")
     
     
