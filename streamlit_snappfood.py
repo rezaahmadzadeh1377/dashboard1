@@ -116,39 +116,31 @@ else:
 st.write(est.summary())
 
 column1,column2 = st.columns((2))
-st.subheader("two factor regression : q1 = p + q' (the percentage of one fruite to total is added to the equation)")
-X = np.log(filtered_df[["real price","percentage of one fruit"]])
-y =  np.log(filtered_df["amount"])
-X = sm.add_constant(X) 
-est = sm.OLS(y, X).fit() 
-
-
-if est.pvalues["real price"] <= 0.05:
-    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is statistically significant </p>"
-    st.markdown(s, unsafe_allow_html=True)  
-else:
-    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is not statistically significant </p>"
-    st.markdown(s, unsafe_allow_html=True)  
-    
 
   
 
 st.write(est.summary())
 
     
-from statsmodels.tsa.filters.hp_filter import hpfilter
-#get the values
-sales_cycle, sales_trend = hpfilter(filtered_df['amount'], lamb=1600)
-     
-st.subheader("ampunt of fruits sold")
-filtered_df['cycle'] = sales_cycle
-filtered_df['trend'] = sales_trend
-fig1 = px.bar(filtered_df, y = ["amount"], x = "dates")
-    
-st.plotly_chart(fig1,use_container_width=True)
 
-st.subheader("Relationship between real price and amount")
+st.subheader("Relationship between real price and amount and the share of fruits")
 fig1 = px.scatter(filtered_df, y = "percentage of one fruit", x= "real price",trendline='ols',log_x=True,log_y=True)
+
+st.subheader("two factor regression : q1 = p + q' (the percentage of one fruite to total is added to the equation)")
+X = np.log(filtered_df[["real price"]])
+y =  np.log(filtered_df["percentage of one fruit"])
+X = sm.add_constant(X) 
+est = sm.OLS(y, X).fit() 
+
+
+if est.pvalues["real price"] <= 0.05:
+    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price to its share of total sale and it is statistically significant </p>"
+    st.markdown(s, unsafe_allow_html=True)  
+else:
+    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price o its share of total sale and it is not statistically significant </p>"
+    st.markdown(s, unsafe_allow_html=True)  
+    
+
     
 st.plotly_chart(fig1,use_container_width=True)
 csv = df.to_csv(index = False).encode('utf-8')
