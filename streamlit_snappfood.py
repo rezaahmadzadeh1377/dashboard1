@@ -142,7 +142,7 @@ sales_cycle, sales_trend = hpfilter(filtered_df['amount'], lamb=1600)
 st.subheader("Relationship between real price and amount")
 filtered_df['cycle'] = sales_cycle
 filtered_df['trend'] = sales_trend
-fig1 = px.line_chart(filtered_df, y = ["cycle","trend"], x = "dates")
+fig1 = plt.line(filtered_df, y = ["cycle","trend"], x = "dates")
     
 st.plotly_chart(fig1,use_container_width=True)
 
