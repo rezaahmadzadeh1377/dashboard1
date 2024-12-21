@@ -68,18 +68,29 @@ else:
 
 coll1, coll2 = st.columns((2))
 
-with coll1:
-    st.subheader("Relationship between real price and amount")
-    fig1 = px.scatter(filtered_df, y = "amount", x= "real price",trendline='ols',log_x=True,log_y=True)
+
+st.subheader("Relationship between real price and amount")
+fig1 = px.scatter(filtered_df, y = "amount", x= "real price",trendline='ols',log_x=True,log_y=True)
     
-    st.plotly_chart(fig1,use_container_width=True)
+st.plotly_chart(fig1,use_container_width=True)
 
 
-with coll2:
-    results = px.get_trendline_results(fig1)
-    st.write(results.px_fit_results.iloc[0].summary(),use_container_width=True)
+
     
-    
+st.subheader("two factor regression : q1 = p  ")
+X = np.log(filtered_df[["real price"]])
+y =  np.log(filtered_df["amount"])
+X = sm.add_constant(X) 
+est = sm.OLS(y, X).fit() 
+
+if est.pvalues["real price"] <= 0.05:
+    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is statistically large </p>"
+    st.markdown(s, unsafe_allow_html=True)  
+else:
+    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is not statistically large </p>"
+    st.markdown(s, unsafe_allow_html=True)  
+st.write(est.summary())
+   
     
 
     
@@ -88,7 +99,7 @@ results = px.get_trendline_results(fig1)
 
 #st.write(results.px_fit_results.iloc[0].summary())
 
-st.subheader("two factor regression : q1 = p + qt ")
+st.subheader("two factor regression : q1 = p + qt   (the all amounts sold is added to the equation)"  )
 X = np.log(filtered_df[["real price","total of fruits in one month"]])
 y =  np.log(filtered_df["amount"])
 X = sm.add_constant(X) 
@@ -103,7 +114,7 @@ else:
 st.write(est.summary())
 
 column1,column2 = st.columns((2))
-st.subheader("two factor regression : q1 = p + q' ")
+st.subheader("two factor regression : q1 = p + q' (the percentagecof one fruite to total is added to the equation)")
 X = np.log(filtered_df[["real price","percentage of one fruit"]])
 y =  np.log(filtered_df["amount"])
 X = sm.add_constant(X) 
