@@ -79,7 +79,7 @@ st.plotly_chart(fig1,use_container_width=True)
 
 
     
-st.subheader("two factor regression : q1 = p  ")
+st.subheader("one factor regression : q1 = p  ")
 X = np.log(filtered_df[["real price"]])
 y =  np.log(filtered_df["amount"])
 X = sm.add_constant(X) 
@@ -140,7 +140,7 @@ from statsmodels.tsa.filters.hp_filter import hpfilter
 #get the values
 sales_cycle, sales_trend = hpfilter(filtered_df['amount'], lamb=1600)
      
-st.subheader("Relationship between real price and amount")
+st.subheader("ampunt of fruits sold")
 filtered_df['cycle'] = sales_cycle
 filtered_df['trend'] = sales_trend
 fig1 = px.bar(filtered_df, y = ["amount"], x = "dates")
@@ -148,6 +148,10 @@ fig1 = px.bar(filtered_df, y = ["amount"], x = "dates")
 st.plotly_chart(fig1,use_container_width=True)
 
 
+st.subheader("Relationship between real price and amount")
+fig1 = px.scatter(filtered_df, y = "amount", x= "real price",trendline='ols')
+    
+st.plotly_chart(fig1,use_container_width=True)
     
 
 
