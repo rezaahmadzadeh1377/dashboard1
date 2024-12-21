@@ -126,7 +126,7 @@ st.write(est.summary())
 st.subheader("Relationship between real price and amount and the share of fruits")
 fig1 = px.scatter(filtered_df, y = "percentage of one fruit", x= "real price",trendline='ols',log_x=True,log_y=True)
 
-st.subheader("two factor regression : q1 = p + q' (the percentage of one fruite to total is added to the equation)")
+ 
 X = np.log(filtered_df[["real price"]])
 y =  np.log(filtered_df["percentage of one fruit"])
 X = sm.add_constant(X) 
