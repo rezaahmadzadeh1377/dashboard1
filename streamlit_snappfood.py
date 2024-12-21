@@ -114,7 +114,7 @@ else:
 st.write(est.summary())
 
 column1,column2 = st.columns((2))
-st.subheader("two factor regression : q1 = p + q' (the percentagecof one fruite to total is added to the equation)")
+st.subheader("two factor regression : q1 = p + q' (the percentage of one fruite to total is added to the equation)")
 X = np.log(filtered_df[["real price","percentage of one fruit"]])
 y =  np.log(filtered_df["amount"])
 X = sm.add_constant(X) 
