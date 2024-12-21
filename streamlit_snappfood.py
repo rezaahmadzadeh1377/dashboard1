@@ -119,7 +119,6 @@ column1,column2 = st.columns((2))
 
   
 
-st.write(est.summary())
 
     
 
