@@ -147,6 +147,9 @@ fig1 = px.bar(filtered_df, y = ["amount"], x = "dates")
     
 st.plotly_chart(fig1,use_container_width=True)
 
-
+st.subheader("Relationship between real price and amount")
+fig1 = px.scatter(filtered_df, y = "percentage of one fruit", x= "real price",trendline='ols',log_x=True,log_y=True)
+    
+st.plotly_chart(fig1,use_container_width=True)
 csv = df.to_csv(index = False).encode('utf-8')
 st.download_button('Download Data', data = csv, file_name = "Data.csv",mime = "text/csv")
