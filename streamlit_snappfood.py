@@ -121,7 +121,7 @@ st.write(est.summary())
 
 #scatrring real price and the percentage
 
-st.subheader("Relationship between real price and amount and the share of fruits")
+st.subheader("Relationship between real price and the share of fruits")
 fig1 = px.scatter(filtered_df, y = "percentage of one fruit", x= "real price",trendline='ols',log_x=True,log_y=True)
 
  
