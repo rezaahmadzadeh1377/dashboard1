@@ -84,10 +84,10 @@ X = sm.add_constant(X)
 est = sm.OLS(y, X).fit() 
 
 if est.pvalues["real price"] <= 0.05:
-    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is statistically large </p>"
+    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is statistically significant </p>"
     st.markdown(s, unsafe_allow_html=True)  
 else:
-    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is not statistically large </p>"
+    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is not statistically significant </p>"
     st.markdown(s, unsafe_allow_html=True)  
 st.write(est.summary())
    
@@ -106,10 +106,10 @@ X = sm.add_constant(X)
 est = sm.OLS(y, X).fit() 
 
 if est.pvalues["real price"] <= 0.05:
-    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is statistically large </p>"
+    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is statistically significant </p>"
     st.markdown(s, unsafe_allow_html=True)  
 else:
-    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is not statistically large </p>"
+    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is not statistically significant </p>"
     st.markdown(s, unsafe_allow_html=True)  
 st.write(est.summary())
 
@@ -122,10 +122,10 @@ est = sm.OLS(y, X).fit()
 
 
 if est.pvalues["real price"] <= 0.05:
-    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is statistically large </p>"
+    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is statistically significant </p>"
     st.markdown(s, unsafe_allow_html=True)  
 else:
-    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is not statistically large </p>"
+    s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price and it is not statistically significant </p>"
     st.markdown(s, unsafe_allow_html=True)  
     
 
@@ -134,8 +134,17 @@ else:
 st.write(est.summary())
 
     
-        
+from statsmodels.tsa.filters.hp_filter import hpfilter
+#get the values
+sales_cycle, sales_trend = hpfilter(filtered_df['amount'], lamb=1600)
+     
+st.subheader("Relationship between real price and amount")
+filtered_df['cycle'] = sales_cycle
+fig1 = px.line(filtered_df, y = "cycle", x = "dates")
     
+st.plotly_chart(fig1,use_container_width=True)
+
+
     
 
 
