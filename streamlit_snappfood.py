@@ -149,7 +149,7 @@ st.plotly_chart(fig1,use_container_width=True)
 
 
 st.subheader("Relationship between real price and amount")
-fig1 = px.scatter(filtered_df, y = "amount", x= "real price",trendline='ols')
+fig1 = px.scatter(filtered_df, y = "amount", x= ""percentage of one fruit",trendline='ols')
     
 st.plotly_chart(fig1,use_container_width=True)
     
