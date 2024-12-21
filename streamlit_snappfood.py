@@ -9,9 +9,9 @@ import warnings
 import seaborn as sns
 warnings.filterwarnings('ignore')
 
-st.set_page_config(page_title="Superstore!!!", page_icon=":bar_chart:",layout="wide")
+st.set_page_config(page_title="fruitstore!!!", page_icon=":bar_chart:",layout="wide")
 
-st.title(" :bar_chart: Sample SuperStore EDA")
+st.title(" :bar_chart: Sample fruitstore")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>',unsafe_allow_html=True)
 
 fl = st.file_uploader(":file_folder: Upload a file",type=(["csv","txt","xlsx","xls"]))
@@ -143,7 +143,7 @@ sales_cycle, sales_trend = hpfilter(filtered_df['amount'], lamb=1600)
 st.subheader("Relationship between real price and amount")
 filtered_df['cycle'] = sales_cycle
 filtered_df['trend'] = sales_trend
-fig1 = px.line(filtered_df, y = ["trend"], x = "dates")
+fig1 = px.bar(filtered_df, y = ["amount"], x = "dates")
     
 st.plotly_chart(fig1,use_container_width=True)
 
