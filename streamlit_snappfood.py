@@ -130,7 +130,7 @@ st.subheader("two factor regression : q1 = p + q' (the percentage of one fruite 
 X = np.log(filtered_df[["real price"]])
 y =  np.log(filtered_df["percentage of one fruit"])
 X = sm.add_constant(X) 
-est = sm.OLS(y, X).fit() 
+
 
 
 if est.pvalues["real price"] <= 0.05:
@@ -139,7 +139,7 @@ if est.pvalues["real price"] <= 0.05:
 else:
     s = f"<p style='font-size:25px;'> {np.round(est.params["real price"],4)} is the sensitivity of price o its share of total sale and it is not statistically significant </p>"
     st.markdown(s, unsafe_allow_html=True)  
-    
+est = sm.OLS(y, X).fit()  
 
     
 st.plotly_chart(fig1,use_container_width=True)
