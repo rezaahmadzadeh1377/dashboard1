@@ -67,6 +67,12 @@ elif not region:
     filtered_df = df[df["fruit type"].isin(fruit_type)]
 else:
     filtered_df = df3[df3["region"].isin(region) & df3["fruit type"].isin(fruit_type)]
+    
+st.subheader("wise amount sale")
+fig1 = px.bar(filtered_df, y = "amount", x= "dates")
+    
+st.plotly_chart(fig1,use_container_width=True)
+
 
 
 #scattering price and amount 
