@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np 
 import os
 import warnings
+import seaborn as sns
 warnings.filterwarnings('ignore')
 
 st.set_page_config(page_title="Superstore!!!", page_icon=":bar_chart:",layout="wide")
@@ -142,7 +143,7 @@ sales_cycle, sales_trend = hpfilter(filtered_df['amount'], lamb=1600)
 st.subheader("Relationship between real price and amount")
 filtered_df['cycle'] = sales_cycle
 filtered_df['trend'] = sales_trend
-fig1 = plt.line(filtered_df, y = ["cycle","trend"], x = "dates")
+fig1 = sn.lineplot(filtered_df, y = ["cycle","trend"], x = "dates")
     
 st.plotly_chart(fig1,use_container_width=True)
 
