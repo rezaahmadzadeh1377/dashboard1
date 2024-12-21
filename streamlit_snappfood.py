@@ -147,9 +147,6 @@ fig1 = px.bar(filtered_df, y = ["amount"], x = "dates")
     
 st.plotly_chart(fig1,use_container_width=True)
 
-from statsmodels.tsa.seasonal import seasonal_decompose
-result = seasonal_decompose(filtered_df['amount'])
-st.plotly_chart(result,use_container_width=True)
 
 csv = df.to_csv(index = False).encode('utf-8')
 st.download_button('Download Data', data = csv, file_name = "Data.csv",mime = "text/csv")
